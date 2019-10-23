@@ -10,7 +10,7 @@ trait Timestamps
     /**
      * @ORM\Column(type="datetime")
      */
-
+    use Timestamps;
     private $createdAt;
 
     /**

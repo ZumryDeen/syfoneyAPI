@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TaskListRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class TaskList
 {
@@ -16,6 +17,10 @@ class TaskList
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
+
+    use Timestamps;
+
+
     private $id;
 
     private $title;

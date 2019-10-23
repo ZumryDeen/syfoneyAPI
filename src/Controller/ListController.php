@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\TaskListRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -9,28 +10,31 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ListController extends AbstractFOSRestController
 {
+
     /**
-     * @Route("/list", name="list")
+     * @var TaskListRepository
      */
-    public function index()
+    private $taskListRepository;
+
+    public  function __construct(TaskListRepository $taskListRepository)
     {
-      return $this->json([
-          'message'=>'Welcome to new Controller',
-          'path'=>'ListController'
-      ]);
+
+
+        $this->taskListRepository = $taskListRepository;
     }
 
-    // this is accees from FOS Recipt
-    /**
-     * @Rest\Get("/update",name="app.update")
-     */
-    public function update()
+
+    public function getListsAction()
     {
-        return $this->json([
-            'message'=>'updateController',
-            'path'=>'Update'
-        ]);
+
+        return $this->taskListRepository->findAll();
     }
+
+    public function getListTaskAction(int $id)
+    {
+
+    }
+
 
 
 }

@@ -4,4 +4,5 @@
 
 lists:
   type : rest
-  resource: App\Controller\TestrouteController
+  resource: App\Controller\ListController
+  prefix    : api
